@@ -9,8 +9,10 @@ const UserGroup = (props: Props) => {
     return (
         <div className="user-group-container">
             <span className="welcome-text">{"Welcome " + props.userName}</span>
-            <button>Share a video</button>
-            <button onClick={props.handleLogOut}>Log Out</button>
+            <div>
+                <button>Share a video</button>
+                <button onClick={props.handleLogOut}>Log Out</button>
+            </div>
         </div>
     );
 };

@@ -1,11 +1,14 @@
 .user-group-container {
+    display: flex;
     .welcome-text {
+        display: flex;
+        align-items: center;
         color: #e4e4e4;
         margin-right: 5px;
     }
     button {
         border: none;
-        margin: 5px;
+        margin: 0px 5px;
         border-radius: 6px;
         background-color: #f4511e;
         border: none;

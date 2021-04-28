@@ -1,0 +1,36 @@
+.video-description-container {
+    display: flex;
+    color: #e4e4e4;
+    width: 30%;
+    flex-direction: column;
+    height: 100%;
+    & .title-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: 80px;
+        height: fit-content;
+        & .video-title {
+            color: #ff6058;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+    & .description {
+        display: flex;
+        justify-content: flex-start;
+        flex: 1 1 auto;
+        overflow: auto;
+        overflow-wrap: break-word;
+        flex-direction: column;
+        & .label {
+            font-weight: bold;
+        }
+        & .description-content {
+            // height: ;
+            width: 100%;
+            word-wrap: wrap;
+            overflow: auto;
+        }
+    }
+}

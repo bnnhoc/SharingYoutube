@@ -12,7 +12,6 @@ interface TaskBarProps {
 }
 const TaskBar = (props: TaskBarProps) => {
     const { user, handleLogOut } = props;
-    console.log("????", user);
     return (
         <div className="task-bar-container">
             <Title />

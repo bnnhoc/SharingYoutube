@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import YoutubeEmbed from "../components/YoutubeEmbed/EmbededVideos";
+import YoutubeEmbed from "../components/Video/YoutubeEmbed/EmbededVideos";
 import Header from "../components/Header/Header";
 import firebase from "../firebase";
 import "./styles.scss";
@@ -12,14 +12,14 @@ interface State {
     };
     isLoggedIn: boolean;
     isLoading: boolean;
-    items: Array<string>;
+    listVideos: Array<any>;
 }
 class App extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
         this.state = {
-            items: [],
+            listVideos: [],
             isLoading: true,
             isLoggedIn: false,
             user: {
@@ -35,7 +35,7 @@ class App extends Component<Props, State> {
             itemsRef.on("value", (snapshot) => {
                 let items = snapshot.val();
                 let user;
-                if (items[userId]) {
+                if (items && items[userId]) {
                     user = {
                         email: items[userId].email,
                         pw: items[userId].pw,
@@ -47,9 +47,18 @@ class App extends Component<Props, State> {
                     this.setState({ isLoading: false });
                 }
             });
-            return;
+        } else {
+            this.setState({ isLoading: false });
         }
-        this.setState({ isLoading: false });
+        const itemsRef = firebase.database().ref("listVideos");
+        itemsRef.on("value", (snapshot) => {
+            let items = snapshot.val();
+            let listVideos = [];
+            for (let item in items) {
+                listVideos.push({ ...items[item] });
+            }
+            this.setState({ listVideos });
+        });
     };
     handleRegister = (username: string, pw: string) => {
         try {
@@ -85,7 +94,7 @@ class App extends Component<Props, State> {
             let user;
             let key = "";
             for (let item in items) {
-                if (items[item].email === username) {
+                if (items && items[item].email === username) {
                     user = {
                         email: items[item].email,
                         pw: items[item].pw,
@@ -104,7 +113,8 @@ class App extends Component<Props, State> {
         });
     };
     render = () => {
-        const { user, isLoggedIn, isLoading } = this.state;
+        const { user, isLoggedIn, isLoading, listVideos } = this.state;
+        console.log(listVideos);
         return (
             <div className="app-container">
                 <Header
@@ -115,7 +125,9 @@ class App extends Component<Props, State> {
                     handleLogin={this.handleLogin}
                 />
                 <div className="home">
-                    <YoutubeEmbed embedId="vUzCwDXW49o" />
+                    {listVideos.map((video) => {
+                        return <YoutubeEmbed video={video} />;
+                    })}
                 </div>
             </div>
         );
