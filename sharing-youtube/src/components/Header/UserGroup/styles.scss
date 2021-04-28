@@ -1,0 +1,22 @@
+.user-group-container {
+    .welcome-text {
+        color: #e4e4e4;
+        margin-right: 5px;
+    }
+    button {
+        border: none;
+        margin: 5px;
+        border-radius: 6px;
+        background-color: #f4511e;
+        border: none;
+        color: white;
+        text-align: center;
+        opacity: 0.8;
+        transition: 0.3s;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
