@@ -7,7 +7,8 @@ import "./styles.scss";
 interface Props {
     userInfo: string;
 }
-const ShareBox = (props: Props) => {
+
+const ShareBox: React.FunctionComponent<Props> = (props: Props) => {
     const [url, setURL] = useState("");
 
     return (
