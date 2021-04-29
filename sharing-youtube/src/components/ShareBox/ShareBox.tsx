@@ -24,6 +24,12 @@ const ShareBox = (props: Props) => {
                             render={({ history }) => (
                                 <button
                                     onClick={() => {
+                                        if (!props.userInfo) {
+                                            alert(
+                                                "Please Login To Share Video"
+                                            );
+                                            return;
+                                        }
                                         const videoId = validateYouTubeUrl(url);
                                         if (videoId) {
                                             const videosRef = firebase
@@ -90,6 +96,8 @@ const ShareBox = (props: Props) => {
                                                     }
                                                 }
                                             );
+                                        } else {
+                                            alert("Invalid Youtube URL");
                                         }
                                     }}
                                     className=""

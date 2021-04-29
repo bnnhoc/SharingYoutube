@@ -13,7 +13,7 @@ interface Props {
     userInfo: string;
 }
 const VideoDescription = (props: Props) => {
-    const { video, isLoggedIn } = props;
+    const { video, isLoggedIn, userInfo } = props;
     const [likeStatus, setLikeStatus] = useState(
         props.video.vote?.includes(props.userInfo)
             ? true
@@ -21,11 +21,19 @@ const VideoDescription = (props: Props) => {
             ? false
             : undefined
     );
-    console.log("isLoggedIn", isLoggedIn);
     const [videoInfo, setVideoInfo] = useState({
         title: "",
         description: "",
     });
+    useEffect(() => {
+        setLikeStatus(
+            video.vote?.includes(props.userInfo)
+                ? true
+                : video.disvote?.includes(props.userInfo)
+                ? false
+                : undefined
+        );
+    }, [userInfo]);
     const getVideoInfo = async () => {
         try {
             const response = await axios.request({

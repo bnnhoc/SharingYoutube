@@ -103,28 +103,35 @@ class App extends Component<Props, State> {
             let items = snapshot.val();
             let user;
             let key = "";
+            let isValidAcc = false;
             for (let item in items) {
                 if (items && items[item].email === username) {
-                    user = {
-                        email: items[item].email,
-                        pw: items[item].pw,
-                    };
-                    key = item;
-                    break;
+                    if (items[item].pw === pw) {
+                        user = {
+                            email: items[item].email,
+                            pw: items[item].pw,
+                        };
+                        isValidAcc = true;
+                        key = item;
+                        break;
+                    }
                 }
             }
-            if (user) {
-                this.setState({ user, isLoggedIn: true }, () => {
-                    key && sessionStore(key);
-                });
+            if (isValidAcc) {
+                if (user) {
+                    this.setState({ user, isLoggedIn: true }, () => {
+                        key && sessionStore(key);
+                    });
+                } else {
+                    this.handleRegister(username, pw);
+                }
             } else {
-                this.handleRegister(username, pw);
+                alert("Wrong Id or Password");
             }
         });
     };
     render = () => {
         const { user, isLoggedIn, isLoading, listVideos } = this.state;
-        console.log(listVideos);
         return (
             <Router basename={process.env.PUBLIC_URL}>
                 <div className="app-container">
