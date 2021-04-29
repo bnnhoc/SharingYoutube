@@ -11,15 +11,21 @@ class Home extends Component<Props, State> {
         const { listVideos, userInfo, isLoggedIn } = this.props;
         return (
             <div className="home">
-                {listVideos.map((video) => {
-                    return (
-                        <YoutubeEmbed
-                            userInfo={userInfo}
-                            isLoggedIn={isLoggedIn}
-                            video={video}
-                        />
-                    );
-                })}
+                {listVideos
+                    .sort((a, b) => {
+                        return Number(a.dateShare) > Number(b.dateShare)
+                            ? 1
+                            : 0;
+                    })
+                    .map((video) => {
+                        return (
+                            <YoutubeEmbed
+                                userInfo={userInfo}
+                                isLoggedIn={isLoggedIn}
+                                video={video}
+                            />
+                        );
+                    })}
             </div>
         );
     };

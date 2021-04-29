@@ -68,6 +68,7 @@ const ShareBox = (props: Props) => {
                                                                         link: url,
                                                                         shareBy:
                                                                             props.userInfo,
+                                                                        dateShare: new Date().getTime(),
                                                                     });
                                                                 history.push(
                                                                     "/"

@@ -14,7 +14,9 @@ const UserGroup = (props: Props) => {
                 <button>
                     <Link to="/share">Share a video</Link>
                 </button>
-                <button onClick={props.handleLogOut}>Log Out</button>
+                <button className="logout" onClick={props.handleLogOut}>
+                    Log Out
+                </button>
             </div>
         </div>
     );

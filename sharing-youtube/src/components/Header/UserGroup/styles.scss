@@ -20,7 +20,7 @@
         margin: 5px 5px;
         padding: 3px 6px;
         border-radius: 6px;
-        background-color: #f4511e;
+        background-color: rgb(41, 157, 130);
         border: none;
         font-size: 16px;
         color: white;
@@ -29,6 +29,9 @@
         transition: 0.3s;
         text-decoration: none;
         cursor: pointer;
+        &.logout {
+            background-color: rgb(230, 86, 86);
+        }
         &:hover {
             opacity: 1;
         }
