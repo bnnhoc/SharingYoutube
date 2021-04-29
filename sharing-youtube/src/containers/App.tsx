@@ -3,7 +3,17 @@ import YoutubeEmbed from "../components/Video/YoutubeEmbed/EmbededVideos";
 import Header from "../components/Header/Header";
 import firebase from "../firebase";
 import "./styles.scss";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useRouteMatch,
+    useParams,
+} from "react-router-dom";
 import { sessionStore } from "../utils/utils";
+import Home from "./Home/Home";
+import SharePage from "./SharePage/SharePage";
 interface Props {}
 interface State {
     user: {
@@ -116,20 +126,29 @@ class App extends Component<Props, State> {
         const { user, isLoggedIn, isLoading, listVideos } = this.state;
         console.log(listVideos);
         return (
-            <div className="app-container">
-                <Header
-                    handleLogOut={this.handleLogOut}
-                    user={user}
-                    isLoading={isLoading}
-                    isLoggedIn={isLoggedIn}
-                    handleLogin={this.handleLogin}
-                />
-                <div className="home">
-                    {listVideos.map((video) => {
-                        return <YoutubeEmbed video={video} />;
-                    })}
+            <Router basename={process.env.PUBLIC_URL}>
+                <div className="app-container">
+                    <Header
+                        handleLogOut={this.handleLogOut}
+                        user={user}
+                        isLoading={isLoading}
+                        isLoggedIn={isLoggedIn}
+                        handleLogin={this.handleLogin}
+                    />
+                    <Switch>
+                        <Route path="/share">
+                            <SharePage userInfo={user.email} />
+                        </Route>
+                        <Route path="/">
+                            <Home
+                                userInfo={user.email}
+                                listVideos={listVideos}
+                                isLoggedIn={isLoggedIn}
+                            />
+                        </Route>
+                    </Switch>
                 </div>
-            </div>
+            </Router>
         );
     };
 }

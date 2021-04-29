@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from "react";
+import { Link, Route } from "react-router-dom";
 import { validateEmail } from "../../../utils/utils";
 import "./styles.scss";
 interface Props {
@@ -10,7 +11,9 @@ const UserGroup = (props: Props) => {
         <div className="user-group-container">
             <span className="welcome-text">{"Welcome " + props.userName}</span>
             <div>
-                <button>Share a video</button>
+                <button>
+                    <Link to="/share">Share a video</Link>
+                </button>
                 <button onClick={props.handleLogOut}>Log Out</button>
             </div>
         </div>

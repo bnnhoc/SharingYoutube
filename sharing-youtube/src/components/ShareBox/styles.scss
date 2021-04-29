@@ -1,0 +1,85 @@
+.share-box-container {
+    width: 60%;
+    position: relative;
+    max-width: 800px;
+    height: 40%;
+    border-radius: 4px;
+    border: 2px solid white;
+    background-color: rgb(47, 28, 65);
+
+    & .label-share {
+        position: absolute;
+        left: 20px;
+        font-size: 20px;
+        top: -18px;
+        background: #27133a;
+        padding: 0px 10px 2px 10px;
+        color: #e4e4e4;
+        border-radius: 15px;
+    }
+    & .input-share-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+        & .input-row {
+            display: flex;
+            height: 71px;
+            width: 100%;
+            & .label {
+                display: flex;
+                align-items: center;
+                position: relative;
+                font-size: 16px;
+                height: 25px;
+                margin-left: 5%;
+                color: white;
+            }
+            & .input-container {
+                position: absolute;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                & input {
+                    -webkit-appearance: none;
+                    &:focus {
+                        outline: none;
+                    }
+                    border: 1px solid #dddfe2;
+                    height: 25px;
+                    border-radius: 6px;
+                    width: calc(80% - 182px);
+                    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+                        0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                        0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+                }
+                & button {
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 16px;
+                    background-color: rgb(235, 236, 240);
+                    border: none;
+                    color: black;
+                    text-align: center;
+                    opacity: 0.8;
+                    transition: 0.3s;
+                    text-decoration: none;
+                    cursor: pointer;
+                    margin-top: 30px;
+                    height: 25px;
+                    width: calc(80% - 174px);
+                    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+                        0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                        0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+                }
+            }
+        }
+    }
+}

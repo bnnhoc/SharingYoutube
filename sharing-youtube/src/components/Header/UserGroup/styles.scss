@@ -7,11 +7,22 @@
         margin-right: 5px;
     }
     button {
+        & a {
+            text-decoration: none;
+            &:link {
+                color: white;
+            }
+            &:visited {
+                color: white;
+            }
+        }
         border: none;
-        margin: 0px 5px;
+        margin: 5px 5px;
+        padding: 3px 6px;
         border-radius: 6px;
         background-color: #f4511e;
         border: none;
+        font-size: 16px;
         color: white;
         text-align: center;
         opacity: 0.8;
